@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Department Finder</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        /* Form Input Fields */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Result Styling */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Find Employee Department</h2>
+
+<!-- Form Section -->
+<div class="form-container">
+    <form action="/getDepartment" method="post">
+        <label for="employeeId"><b>Employee ID:</b></label>
+        <input type="text" id="employeeId" name="employeeId" placeholder="Enter Employee ID" required>
+
+        <label for="name"><b>Employee Name:</b></label>
+        <input type="text" id="name" name="name" placeholder="Enter Employee Name" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- Result Section -->
+<div class="result">
+    <h3 th:if="${department}">Department: <span th:text="${department}"></span></h3>
+    <h3 th:if="${error}" class="error"><span th:text="${error}"></span></h3>
+</div>
+
+</body>
+</html>
